@@ -20,9 +20,9 @@ import { getStatusLabel } from "../../features/taskStatus/lib/getStatusLabel";
 import { deleteTask } from "../../features/deleteTask/deleteTask";
 import { nextStatus } from "../../features/taskStatus/lib/nextStatus";
 import { Task, TaskStatus } from "../../entities/task/taskModel";
-import { taskStorage } from '../../shared/lib/storage/taskStorage';
-import { useThemeColor } from '../../shared/lib/hooks/useThemeColor';
-import { globalStyles } from '../../shared/styles/globalStyles';
+import { taskStorage } from '../../shared/lib/storage/taskStorage'; //
+import { useThemeColor } from '../../shared/lib/hooks/useThemeColor'; // хук, который возвращает цвет
+import { globalStyles } from '../../shared/styles/globalStyles';  // некоторые глобальные стили
 
 export default function TaskView() {
     const [title, setTitle] = useState('');

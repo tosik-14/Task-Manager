@@ -17,7 +17,6 @@ export const taskStorage = {
         const tasks = await this.getAll();
         tasks.push(task);
         await this.saveAll(tasks);
-        console.log(task, 'ADD NEW TASK TASK STORAGE');
     },
 
     async update(updatedTask: Task) {

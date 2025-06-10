@@ -7,14 +7,12 @@ import { taskStorage } from '../../shared/lib/storage/taskStorage';
 import { Task } from '../../entities/task/taskModel';
 import { Stack, useRouter } from 'expo-router';
 import {getStatusLabel} from "../../features/taskStatus/lib/getStatusLabel";
-import AddTaskIcon from '../../shared/assets/images/AddTaskIcon';
 import { useThemeColor } from '../../shared/lib/hooks/useThemeColor';
-import {globalStyles} from "@/src/shared/styles/globalStyles";
+import {globalStyles} from "../../shared/styles/globalStyles";
 import { LinearGradient } from 'expo-linear-gradient';
 import { sortTasks } from './utils/sortUtils';
-import SortIcon from '../../shared/assets/images/SortIcon';
-import UpArrowIcon from '../../shared/assets/images/UpArrowIcon';
-import DownArrowIcon from "@/src/shared/assets/images/DownArrowIcon";
+import Icon from '../../shared/ui/Icon';
+
 
 export default function HomeScreen() {
     const [tasks, setTasks] = useState<Task[]>([]);
@@ -24,7 +22,7 @@ export default function HomeScreen() {
     const [showSortDropdown, setShowSortDropdown] = useState(false);
 
 
-    const backgroundColor = useThemeColor({}, 'background');
+    const backgroundColor = useThemeColor({}, 'background'); // цвета при смене темы
     const upBackgroundColor = useThemeColor({}, 'upBackground');
     const textColor = useThemeColor({}, 'text');
     const iconColor = useThemeColor({}, 'icon');
@@ -41,10 +39,10 @@ export default function HomeScreen() {
     };
 
     const sortOptions = [
-        { label: 'Status', value: 'status_asc', icon: <UpArrowIcon width={16} height={16} color={textColor} /> },
-        { label: 'Status', value: 'status_desc', icon: <DownArrowIcon width={16} height={16} color={textColor} /> },
-        { label: 'Date', value: 'date_asc', icon: <UpArrowIcon width={16} height={16} color={textColor} /> },
-        { label: 'Date', value: 'date_desc', icon: <DownArrowIcon width={16} height={16} color={textColor} /> },
+        { label: 'Status', value: 'status_asc', icon: <Icon name="arrowUp" size={20} color={iconColor} /> },
+        { label: 'Status', value: 'status_desc', icon: <Icon name="arrowDown" size={20} color={iconColor} /> },
+        { label: 'Date', value: 'date_asc', icon: <Icon name="arrowUp" size={20} color={iconColor} /> },
+        { label: 'Date', value: 'date_desc', icon: <Icon name="arrowDown" size={20} color={iconColor} /> },
     ];
 
 
@@ -75,7 +73,7 @@ export default function HomeScreen() {
                             onPress={() => setShowSortDropdown(prev => !prev)}
                             style={styles.sortButton}
                         >
-                            <SortIcon width={20} height={20} color={iconColor}/>
+                            <Icon name="sort" size={20} color={iconColor} />
                         </TouchableOpacity>
                     ),
                     headerRight: () => (
@@ -83,7 +81,8 @@ export default function HomeScreen() {
                             style={styles.addButton}
                             onPress={() => router.push('/task/task_view')}
                         >
-                            <AddTaskIcon width={20} height={20} color={iconColor}/>
+                            {/*<AddTaskIcon width={20} height={20} color={iconColor}/>*/}
+                            <Icon name="add" size={20} color={iconColor} />
                             {/*<Text style={[styles.title, globalStyles.fontB16, { color: textColor }]}>Cjhn</Text>*/}
                         </TouchableOpacity>
                     ),

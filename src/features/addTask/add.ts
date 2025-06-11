@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 /*import { v4 as uuidv4 } from 'uuid';*/
 import uuid from 'react-native-uuid';
 import { Task, TaskStatus} from '../../entities/task/taskModel';
-import { taskStorage } from '../../shared/lib/storage/taskStorage';
+import { taskStorage } from '../../services/storage/taskStorage';
 
 export async function addTask(data: {
     title: string;
@@ -13,7 +13,7 @@ export async function addTask(data: {
     status?: TaskStatus;
 }) {
     if (!data.title || !data.dueDate) {
-        throw new Error('Заполните заголовок и дату');
+        throw new Error('Fill the title and the date');
     }
 
     const newTask: Task = {
@@ -28,11 +28,9 @@ export async function addTask(data: {
 
     try {
         await taskStorage.add(newTask);
-        console.log('TASK ADDED add.ts');
 
     } catch {
-        console.log('ERROR add.ts');
-        throw new Error('Не удалось сохранить задачу');
+        throw new Error('Failed to save task');
     }
 }
 

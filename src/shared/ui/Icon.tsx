@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, ImageStyle, StyleProp } from 'react-native';
 
 type IconProps = {
-    name: string; //имя иконки
+    name: string; //icon name
     size?: number;
     color?: string;
     style?: StyleProp<ImageStyle>;

@@ -1,4 +1,4 @@
-import HomeScreen from '../../pages/home/Index';
+import HomeScreen from '../../pages/home/HomeScreen';
 import {useCachedResources} from "../../shared/lib/hooks/useCachedResources";
 
 export default function Index() {

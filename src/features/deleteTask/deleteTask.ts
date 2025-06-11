@@ -1,11 +1,11 @@
-import { taskStorage } from '../../shared/lib/storage/taskStorage';
+import { taskStorage } from '../../services/storage/taskStorage';
 
 export async function deleteTask(taskId: string): Promise<void> {
     try {
         await taskStorage.remove(taskId);
-        console.log(`Задача с id=${taskId} удалена`);
+        console.log(`Task with the id=${taskId} was deleted`);
     } catch (error) {
-        console.error('Ошибка при удалении задачи:', error);
-        throw new Error('Не удалось удалить задачу');
+        console.error('Error while deleting task:', error);
+        throw new Error('Failed to delete task');
     }
 }
